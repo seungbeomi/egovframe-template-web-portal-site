@@ -52,20 +52,20 @@
  ******************************************************** */
 function fn_egov_init_QustnrManage(){
     // 시작일자, 종료일자
-    if (document.qustnrManageVO.searchBgnDe.value == "" && document.qustnrManageVO.searchEndDe.value == "") {
+    if (document.qustnrManageVO.qestnrBeginDe.value == "" && document.qustnrManageVO.qestnrEndDe.value == "") {
         var now = new Date();
         var year= now.getFullYear();
         var mon = (now.getMonth()+1)>9 ? ''+(now.getMonth()+1) : '0'+(now.getMonth()+1);
         var day = now.getDate()>9 ? ''+now.getDate() : '0'+now.getDate();
         var toDay = year + "-" + mon + "-" + day;
         
-        document.qustnrManageVO.searchBgnDe.value = toDay;
-        document.qustnrManageVO.searchEndDe.value = toDay;
-    } else if (document.qustnrManageVO.searchBgnDe.value != "" && document.qustnrManageVO.searchEndDe.value != "") {
-        var fromDate = document.qustnrManageVO.searchBgnDe.value;
-        var toDate = document.qustnrManageVO.searchEndDe.value;
-        document.qustnrManageVO.searchBgnDe.value = fromDate.substring(0, 4) + "-" + fromDate.substring(4, 6) + "-" + fromDate.substring(6, 8);
-        document.qustnrManageVO.searchEndDe.value = toDate.substring(0, 4) + "-" + toDate.substring(4, 6) + "-" + toDate.substring(6, 8);
+        document.qustnrManageVO.qestnrBeginDe.value = toDay;
+        document.qustnrManageVO.qestnrEndDe.value = toDay;
+    } else if (document.qustnrManageVO.qestnrBeginDe.value != "" && document.qustnrManageVO.qestnrBeginDe.value != "") {
+        var fromDate = document.qustnrManageVO.qestnrBeginDe.value;
+        var toDate = document.qustnrManageVO.qestnrEndDe.value;
+        document.qustnrManageVO.qestnrBeginDe.value = fromDate.substring(0, 4) + "-" + fromDate.substring(4, 6) + "-" + fromDate.substring(6, 8);
+        document.qustnrManageVO.qestnrEndDe.value = toDate.substring(0, 4) + "-" + toDate.substring(4, 6) + "-" + toDate.substring(6, 8);
     }
 }
 /* ********************************************************
@@ -80,14 +80,14 @@ function fn_egov_list_QustnrManage(){
 function fn_egov_save_QustnrManage(){
 	var form = document.qustnrManageVO;
 	
-	var sStartDay = form.searchBgnDe.value.replaceAll("-","");
-	var sEndDay = form.searchEndDe.value.replaceAll("-","");
-
+	var sStartDay = form.qestnrBeginDe.value.replaceAll("-","");
+	var sEndDay = form.qestnrEndDe.value.replaceAll("-","");
+	
 	var iStartDay = parseInt(sStartDay);
 	var iEndDay = parseInt(sEndDay);
 	
 	if(confirm("<spring:message code="common.save.msg" />")){
-		if(!validateQustnrManageVO(form)){ 			
+		if(!validateQustnrManageVO(form)){
 			return;
 		}else{
 			if(iStartDay > iEndDay || iEndDay < iStartDay){
@@ -120,7 +120,7 @@ String.prototype.replaceAll = function(src, repl){
  ******************************************************** */
 function fn_egov_init_date(){
 	
-	$("#searchBgnDe").datepicker(
+	$("#qestnrBeginDe").datepicker(
 	        {dateFormat:'yy-mm-dd'
 	         , showOn: 'button'
 	         , buttonImage: '<c:url value='/images/ico_calendar.png'/>'
@@ -136,7 +136,7 @@ function fn_egov_init_date(){
 	         , showButtonPanel: true // 하단 today, done  버튼기능 추가 표시 (기본은 false)
 	});
 
-	$("#searchEndDe").datepicker( 
+	$("#qestnrEndDe").datepicker( 
 	        {dateFormat:'yy-mm-dd'
 	         , showOn: 'button'
 	         , buttonImage: '<c:url value='/images/ico_calendar.png'/>'
@@ -261,8 +261,8 @@ function fn_egov_init_date(){
                                                 <span class="req">필수</span>
                                             </td>
                                             <td>
-                                                <input type="text" name="searchBgnDe" id="searchBgnDe" class="f_date" maxlength="10" value="${resultInfo.qestnrBeginDe}" title="시작일자입력" />&nbsp ~ &nbsp
-                                                <input type="text" name="searchEndDe" id="searchEndDe" class="f_date" maxlength="10" value="${resultInfo.qestnrEndDe}" title="종료일자입력" >
+                                                <input type="text" name="qestnrBeginDe" id="qestnrBeginDe" class="f_date" maxlength="10" value="${resultInfo.qestnrBeginDe}" title="시작일자입력" />&nbsp ~ &nbsp
+                                                <input type="text" name="qestnrEndDe" id="qestnrEndDe" class="f_date" maxlength="10" value="${resultInfo.qestnrEndDe}" title="종료일자입력" >
                                                 <form:errors path="qestnrBeginDe"/>
                                                 <form:errors path="qestnrEndDe"/>
                                             </td>
