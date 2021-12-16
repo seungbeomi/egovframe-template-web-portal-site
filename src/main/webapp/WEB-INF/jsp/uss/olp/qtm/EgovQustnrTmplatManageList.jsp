@@ -193,11 +193,10 @@ function fn_egov_search_QustnrTmplatManage(){
                                                 <td><img src="<c:url value='/'/>uss/olp/qtm/EgovQustnrTmplatManageImg.do?qestnrTmplatId=${resultInfo.qestnrTmplatId}" alt="${resultInfo.qestnrTmplatTy}템플릿이미지" title="${resultInfo.qestnrTmplatTy}템플릿이미지" width="70px" height="50px"></td>
                                                 <!-- onLoad="if(this.width>65){this.width=65}" -->
                                                 <td class="al">
-                                                	
                                                 	<form name="subForm" method="post" action="<c:url value='/uss/olp/qtm/EgovQustnrTmplatManageDetail.do'/>">
 	                                                	<input name="qestnrTmplatId" type="hidden" value="${resultInfo.qestnrTmplatId}">
 	                                                	<input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>">
-	                                                	<a href="" class="lnk" value="<c:out value="${resultInfo.qestnrTmplatCn}"/>" onclick="fn_egov_detail_QustnrTmplatManage('${resultInfo.qestnrTmplatId}'); return false;">템플릿A에 대한 설명이 들어가는 곳입니다.</a>
+	                                                	<a href="" class="lnk" onclick="fn_egov_detail_QustnrTmplatManage('${resultInfo.qestnrTmplatId}'); return false;"><c:out value="${resultInfo.qestnrTmplatCn}"/></a>
                                                		</form>
                                                 </td>
                                                 <td>${resultInfo.frstRegisterNm}</td>
