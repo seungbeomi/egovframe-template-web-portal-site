@@ -111,7 +111,7 @@ public class EgovQnaManageController {
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
 		model.addAttribute("resultList", qnaManageService.selectQnaList(searchVO));
-
+		
 		// 인증여부 체크
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 
