@@ -34,10 +34,10 @@
 	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/com/cmm/jqueryui.css' />">
 	<script src="<c:url value='/js/egovframework/com/cmm/jquery.js' />"></script>
 	<script src="<c:url value='/js/egovframework/com/cmm/jqueryui.js' />"></script>
+	
 <title>샘플 포털 > 포털시스템관리 > 사용자관리 > 회원관리</title>
 <script type="text/javascript" src="<c:url value="/validator.do"/>"></script>
 <validator:javascript formName="mberManageVO" staticJavascript="false" xhtml="true" cdata="false"/>
-<script type="text/javascript" src="<c:url value='/js/EgovZipPopup.js' />" ></script>
 <script type="text/javaScript" language="javascript" defer="defer">
 <!--
 function fnListPage(){
@@ -60,6 +60,30 @@ function fnUpdate(){
     if(validateMberManageVO(document.mberManageVO)){
         document.mberManageVO.submit();
     }
+}
+
+function fn_egov_ZipSearch(){
+    
+    var $dialog = $('<div id="modalPan"></div>')
+	.html('<iframe style="border: 0px; " src="' + "<c:url value='/sym/cmm/EgovCcmZipSearchPopup.do'/>" +'" width="100%" height="100%"></iframe>')
+	.dialog({
+    	autoOpen: false,
+        modal: true,
+        width: 1050,
+        height: 530,
+        title: "우편번호 검색"
+	});
+    $(".ui-dialog-titlebar").hide();
+	$dialog.dialog('open');
+}
+
+function fn_egov_returnValue(retVal){
+	if (retVal) {
+		document.getElementById("zip_view").value  = retVal.vZip;
+		document.getElementById("adres").value  = retVal.sAddr;
+	}
+	
+	fn_egov_modal_remove();
 }
 
 /**********************************************************
@@ -240,7 +264,7 @@ function fn_egov_modal_remove() {
                                                 <span class="f_search2 w_350">
                                                     <input name="zip_view" id="zip_view" type="text" value="<c:out value='${mberManageVO.zip}'/>" maxlength="8" readonly="readonly" />
                                                     <form:hidden path="zip" />
-                                                    <button type="button" class="btn" onclick="fn_egov_ZipSearch(document.mberManageVO, document.mberManageVO.zip, document.mberManageVO.zip_view, document.mberManageVO.adres);"></button>
+                                                    <button type="button" class="btn" onclick="fn_egov_ZipSearch();"></button>
                                                 </span>
                                                 <span class="f_txt_inner ml15">(우편번호 검색)</span>
                                                 <form:errors path="zip" cssClass="error" />

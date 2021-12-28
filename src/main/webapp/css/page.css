@@ -181,3 +181,7 @@
 .EgovGroupSearch .pop_inner {width: 800px;}
 
 .EgovTemplateInqirePopup .pop_inner {width: 1280px;}
+
+.POP_GROUP_SEARCH .pop_inner,
+.POP_POST_SEARCH .pop_inner,
+.POP_PRGFILE_SEARCH .pop_inner {width: 1024px;}

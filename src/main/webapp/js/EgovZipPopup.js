@@ -72,17 +72,17 @@ loadScript(getContextPath() + '/js/showModalDialog.js');
  */
 function fn_egov_ZipSearch(frm, sZip, vZip, sAddr) {
 	var retVal;
-
+	
 	var url = frm.zip_url.value;
 	//var url = "/ebt/sym/cmm/EgovCcmZipSearchPopup.do"; 
 	var varParam = new Object();
 	varParam.sZip = sZip.value;		
-
+	
 	// IE
 	//var openParam = "dialogWidth:500px;dialogHeight:325px;scroll:no;status:no;center:yes;resizable:yes;";
 	// FIREFOX
 	var openParam = "dialogWidth:550px;dialogHeight:365px;scroll:no;status:no;center:yes;resizable:yes;";
-
+	
 	//retVal = window.showModalDialog(url, varParam, openParam, "zipCallback");
 	
 	var $dialog = $('<div id="modalPan"></div>')
@@ -96,11 +96,11 @@ function fn_egov_ZipSearch(frm, sZip, vZip, sAddr) {
 	});
 	$(".ui-dialog-titlebar").hide();
 	$dialog.dialog('open');
-
+	
 	otherParameters[0] = sZip;
 	otherParameters[1] = vZip;
 	otherParameters[2] = sAddr;
-
+	
 	if(retVal) {
 		sZip.value  = retVal.sZip;
 		vZip.value  = retVal.vZip;
