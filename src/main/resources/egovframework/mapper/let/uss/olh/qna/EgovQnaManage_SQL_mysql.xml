@@ -215,7 +215,7 @@
 			<if test="searchCondition == &quot;qnaProcessSttusCodeNm&quot;">AND
 				CODE_NM LIKE CONCAT('%', #{searchKeyword}, '%')
 			</if>
-			ORDER BY QESTN_SJ DESC			
+			ORDER BY QA_ID DESC			
 			LIMIT  #{recordCountPerPage} OFFSET #{firstIndex}	
 	</select>
 	

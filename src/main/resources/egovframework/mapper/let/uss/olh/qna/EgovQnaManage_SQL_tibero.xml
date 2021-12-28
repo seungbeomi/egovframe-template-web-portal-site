@@ -224,7 +224,7 @@
 				QESTN_SJ LIKE '%' || #{searchKeyword} || '%'
 			</if>
 			
-							ORDER BY QESTN_SJ DESC								   
+							ORDER BY QA_ID DESC								   
 						  ) QNA
 				   ) 
 			WHERE ROWNUM &lt;= #{recordCountPerPage} and RNUM &gt; #{firstIndex}			
